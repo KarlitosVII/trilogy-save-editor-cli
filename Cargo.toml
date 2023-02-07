@@ -1,0 +1,41 @@
+[package]
+name = "trilogy-save-editor-cli"
+version = "1.0.0"
+authors = ["Karlitos"]
+license = "CECILL-2.1"
+edition = "2021"
+rust-version = "1.65.0"
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+[dependencies]
+# Std-like
+anyhow = "1.0"
+derive_more = { version = "0.99", features = [
+    "deref",
+    "deref_mut",
+    "from",
+], default-features = false }
+bitvec = { version = "1.0", features = ["std"], default-features = false }
+indexmap = { version = "1.0", features = ["std"], default-features = false }
+ahash = "0.8"
+
+# Utils
+crc = "3.0"
+encoding_rs = "0.8"
+flate2 = { version = "1.0", features = [
+    "rust_backend",
+], default-features = false }
+uuid = "1.0"
+
+# (De)Serialization
+serde = { version = "1.0", features = [
+    "derive",
+    "rc",
+], default-features = false }
+ron = { version = "0.8", features = ["indexmap"], default-features = false }
+
+# CLI
+clap = { version = "4.0", features = ["derive"] }
